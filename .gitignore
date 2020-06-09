@@ -8,25 +8,26 @@
 **/nbproject/jaxws-build.xml
 **/nbproject/jax-ws.xml
 **/nbproject/jaxws-build.xml
-**/build/
 **/nbbuild/
 **/dist/
 **/nbdist/
 **/.nb-gradle/
 
 # android studio
-**/*.iml
-**/.gradle
-**/local.properties
-**/.idea/caches
-**/.idea/libraries
-**/.idea/modules.xml
-**/.idea/workspace.xml
-**/.idea/navEditor.xml
-**/.idea/assetWizardSettings.xml
+COVID19TrackerApp/*.iml
+COVID19TrackerApp/.gradle
+COVID19TrackerApp/local.properties
+COVID19TrackerApp/.idea/caches
+COVID19TrackerApp/.idea/libraries
+COVID19TrackerApp/.idea/modules.xml
+COVID19TrackerApp/.idea/workspace.xml
+COVID19TrackerApp/.idea/navEditor.xml
+COVID19TrackerApp/.idea/assetWizardSettings.xml
+COVID19TrackerApp/captures
+COVID19TrackerApp/.externalNativeBuild
+COVID19TrackerApp/.cxx
+COVID19TrackerApp/.project
+
+# common
 **/.DS_Store
-**/build
-**/captures
-**/.externalNativeBuild
-**/.cxx
-**/.project
+**/build/
