@@ -38,11 +38,11 @@ public class UsersResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{user}")
-    public String getUser(@PathParam("user") String email) {        
+    public String getUser(@PathParam("user") String username) {        
         JsonObjectBuilder jsonBuilder = Json.createObjectBuilder();        
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();       
         
-        Collection<User> users = usersBean.getUser(email);
+        Collection<User> users = usersBean.getUser(username);
         for (User user : users) {
             arrayBuilder.add(user.getJSONObject());
         }        
