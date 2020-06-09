@@ -72,7 +72,8 @@ public class UsersResource {
         String firstName = formParams.getFirst("firstName");
         String lastName = formParams.getFirst("lastName");
         String email = formParams.getFirst("email");
+        String username = formParams.getFirst("username");
         String password = formParams.getFirst("password");
-        usersBean.addUser(firstName, lastName, email, password);
+        usersBean.addUser(firstName, lastName, email, username, password);
     }
 }

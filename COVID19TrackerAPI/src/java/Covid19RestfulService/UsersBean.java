@@ -25,8 +25,8 @@ public class UsersBean {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public User addUser(String firstName, String lastName, String email, String password) {
-        User newUser = new User(firstName, lastName, email, password);
+    public User addUser(String firstName, String lastName, String email, String username, String password) {
+        User newUser = new User(firstName, lastName, email, username, password);
         entityManager.persist(newUser); // note already in transaction
         return newUser;
     }
