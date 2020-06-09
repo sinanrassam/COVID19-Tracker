@@ -31,10 +31,10 @@ public class UsersBean {
         return newUser;
     }
 
-    public List<User> getUser(String username) {
-        String jpqlCommand = "SELECT u FROM User u WHERE u.username = :username";
+    public List<User> getUser(String email) {
+        String jpqlCommand = "SELECT u FROM User u WHERE u.email = :email";
         Query query = entityManager.createQuery(jpqlCommand);
-        query.setParameter("username", username);
+        query.setParameter("email", email);
         return query.getResultList();
     }
 
