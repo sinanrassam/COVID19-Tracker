@@ -14,19 +14,28 @@ import java.io.Serializable;
 public class UserPK implements Serializable {
 
     public String email;
+    public String username;
 
-    public UserPK(String email) {
+    public UserPK(String email, String username) {
         this.email = email;
     }
 
     @Override
     public boolean equals(Object obj) {
+        boolean isEqual = false;
         if (obj == null || !(obj instanceof UserPK)) {
-            return false;
+            return isEqual;
         } else {
             UserPK other = (UserPK) obj;
 
-            return email.equals(other.email);
+            if (email != null && other.email != null) {
+                isEqual = email.equals(other.email);
+            }
+            if (!isEqual && (username != null && other.username != null)) {
+                isEqual = username.equals(other.username);
+            }
+
+            return isEqual;
         }
 
     }
@@ -36,6 +45,9 @@ public class UserPK implements Serializable {
         int hashCode = 0;
         if (email != null) {
             hashCode ^= email.hashCode();
+        }
+        if (username != null) {
+            hashCode ^= username.hashCode();
         }
         return hashCode;
     }

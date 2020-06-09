@@ -25,16 +25,16 @@ public class UsersBean {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public User addUser(String firstName, String lastName, String email, String password) {
-        User newUser = new User(firstName, lastName, email, password);
+    public User addUser(String firstName, String lastName, String email, String username, String password) {
+        User newUser = new User(firstName, lastName, email, username, password);
         entityManager.persist(newUser); // note already in transaction
         return newUser;
     }
 
-    public List<User> getUser(String email) {
-        String jpqlCommand = "SELECT u FROM User u WHERE u.email = :email";
+    public List<User> getUser(String username) {
+        String jpqlCommand = "SELECT u FROM User u WHERE u.username = :username";
         Query query = entityManager.createQuery(jpqlCommand);
-        query.setParameter("email", email);
+        query.setParameter("username", username);
         return query.getResultList();
     }
 

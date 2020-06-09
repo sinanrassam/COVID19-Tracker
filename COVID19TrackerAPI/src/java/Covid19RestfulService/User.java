@@ -32,6 +32,9 @@ public class User implements Serializable {
     @Id
     @Column(name = "email")
     private String email;
+    @Id
+    @Column(name = "username")
+    private String username;
     @Column(name = "password")
     private String password;
 
@@ -39,10 +42,11 @@ public class User implements Serializable {
 
     }
 
-    public User(String firstName, String lastName, String email, String password) {
+    public User(String firstName, String lastName, String email, String username, String password) {
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
+        setUsername(username);
         setPassword(password);
     }
 
@@ -69,6 +73,14 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getPassword() {
         return password;
@@ -83,6 +95,7 @@ public class User implements Serializable {
         jsonBuilder.add("firstName", firstName);
         jsonBuilder.add("lastName", lastName);
         jsonBuilder.add("email", email);
+        jsonBuilder.add("username", username);
         jsonBuilder.add("password", password);
         return jsonBuilder.build();
     }
