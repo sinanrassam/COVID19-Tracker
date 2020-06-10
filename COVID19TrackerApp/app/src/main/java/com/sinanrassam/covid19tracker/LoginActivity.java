@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.sinanrassam.covid19tracker.Tasks.LoginTask;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText mUsernameView;
@@ -67,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
+            new LoginTask(this).execute(username, password);
         }
 
     }

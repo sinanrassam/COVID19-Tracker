@@ -8,4 +8,6 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_register">Register</string>
     <string name="error_field_required">This field is required</string>
+    <string name="action_sign_in_successful">Login was successful</string>
+    <string name="action_sign_in_unsuccessful">Login Failed</string>
 </resources>
