@@ -3,7 +3,6 @@ package com.sinanrassam.covid19tracker;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,7 +17,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mEmailView;
     private EditText mUsernameView;
     private EditText mPasswordView;
-    EditText passingUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
