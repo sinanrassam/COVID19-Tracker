@@ -6,4 +6,6 @@
     <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
+    <string name="action_register">Register</string>
+    <string name="error_field_required">This field is required</string>
 </resources>

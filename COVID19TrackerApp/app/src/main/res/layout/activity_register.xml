@@ -67,10 +67,10 @@
         android:selectAllOnFocus="true" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_textView_margin"
         android:layout_marginBottom="@dimen/activity_textView_margin"
-        android:text="@string/action_sign_in" />
+        android:text="@string/action_register" />
 </LinearLayout>
