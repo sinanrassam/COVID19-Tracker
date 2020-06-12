@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">COVID19 Tracker</string>
+    <string name="prompt_email">Email Address</string>
+    <string name="prompt_first_name">First Name</string>
+    <string name="prompt_last_name">Last Name</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_register">Register</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="action_sign_in_successful">Login was successful</string>
+    <string name="action_sign_in_unsuccessful">Login Failed</string>
+    <string name="action_register_successful">Account registraion Successful</string>
+    <string name="action_register_unsuccessful">Account creation failed</string>
 </resources>
