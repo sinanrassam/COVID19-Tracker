@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FetchLocationsTask extends AsyncTask<String, Void, Integer> {
-    public static final String API_URL = "http://10.0.2.2:8080/TicketerRestfulService/api";
+    public static final String API_URL = "http://10.0.2.2:8080/COVID19TrackerAPI/api";
 
     @SuppressLint("StaticFieldLeak")
     private Context mContext;
@@ -91,16 +91,16 @@ public class FetchLocationsTask extends AsyncTask<String, Void, Integer> {
     protected void onPostExecute(Integer responseCode) {
         String msg;
         if ((responseCode >= 200) && (responseCode <= 299)) {
-            msg = "Tickets Fetched";
+            msg = "Locations Fetched";
             SimpleAdapter adapter = new SimpleAdapter(mContext, mTicketList,
                     android.R.layout.simple_list_item_2,
-                    new String[]{"Title", "Desc"},
+                    new String[]{"Check In Date", "Location"},
                     new int[]{android.R.id.text1, android.R.id.text2});
             mFragment.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
 
         } else {
-            msg = "Failed to fetch tickets";
+            msg = "Failed to fetch locations";
         }
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
