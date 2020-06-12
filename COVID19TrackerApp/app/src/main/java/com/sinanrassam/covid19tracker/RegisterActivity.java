@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.sinanrassam.covid19tracker.Tasks.LoginTask;
+import com.sinanrassam.covid19tracker.Tasks.RegisterTask;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mFirstNameView;
@@ -88,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
+            new RegisterTask(this).execute(firstName, lastName, email, username, password);
         }
 
     }

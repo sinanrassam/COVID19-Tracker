@@ -10,4 +10,6 @@
     <string name="error_field_required">This field is required</string>
     <string name="action_sign_in_successful">Login was successful</string>
     <string name="action_sign_in_unsuccessful">Login Failed</string>
+    <string name="action_register_successful">Account registraion Successful</string>
+    <string name="action_register_unsuccessful">Account creation failed</string>
 </resources>
