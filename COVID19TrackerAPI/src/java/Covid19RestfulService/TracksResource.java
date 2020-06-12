@@ -16,6 +16,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
@@ -33,16 +34,32 @@ public class TracksResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllTicketsJSON() { 
-        JsonObjectBuilder jsonBuilder = Json.createObjectBuilder();        
+    public String getAllTicketsJSON() {
+        JsonObjectBuilder jsonBuilder = Json.createObjectBuilder();
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-        
+
         Collection<Track> allTracks = tracksBean.getAllTracks();
         for (Track track : allTracks) {
             arrayBuilder.add(track.getJSONObject());
-        }        
+        }
         JsonObject json = jsonBuilder.add("tracks", arrayBuilder).build();
-        
+
+        return json.toString();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{user}")
+    public String getTracksForUser(@PathParam("user") String username) {        
+        JsonObjectBuilder jsonBuilder = Json.createObjectBuilder();
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+
+        Collection<Track> allTracks = tracksBean.getTracksForUser(username);
+        for (Track track : allTracks) {
+            arrayBuilder.add(track.getJSONObject());
+        }
+        JsonObject json = jsonBuilder.add("tracks", arrayBuilder).build();
+
         return json.toString();
     }
 

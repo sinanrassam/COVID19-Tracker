@@ -12,4 +12,7 @@
     <string name="action_sign_in_unsuccessful">Login Failed</string>
     <string name="action_register_successful">Account registraion Successful</string>
     <string name="action_register_unsuccessful">Account creation failed</string>
+    <string name="action_new_location">New Location</string>
+    <string name="action_my_location">My Locations</string>
+    <string name="action_settings">Settings</string>
 </resources>

@@ -43,7 +43,7 @@ public class TracksBean {
         return query.getResultList();
     }
 
-    public List<Track> getAllTracksForUser(String username) {
+    public List<Track> getTracksForUser(String username) {
         String jpqlCommand = "SELECT t FROM Track t WHERE t.username = :username";
         Query query = entityManager.createQuery(jpqlCommand);
         query.setParameter("username", username);
