@@ -15,4 +15,6 @@
     <string name="action_new_location">New Location</string>
     <string name="action_my_location">My Locations</string>
     <string name="action_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
