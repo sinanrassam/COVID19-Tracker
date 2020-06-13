@@ -1,31 +1,27 @@
 package com.sinanrassam.covid19tracker.Entries;
 
+import java.net.URL;
+
 public class PreferenceEntry {
-    private static String mFirstName = null;
-    private static String mLastName = null;
-    private static String mEmail = null;
-    private static String mUsername = null;
+    private static User mUser = null;
+    private static String mApiUrl = null;
 
-    public PreferenceEntry(String firstName, String lastName, String username, String email) {
-        mFirstName = firstName;
-        mLastName = lastName;
-        mUsername = username;
-        mEmail = email;
+    public PreferenceEntry() {
     }
 
-    public String getFirstName() {
-        return mFirstName;
+    public User getUser() {
+        return mUser;
     }
 
-    public String getLastName() {
-        return mLastName;
+    public void setUser(User user) {
+        mUser = user;
     }
 
-    public String getUsername() {
-        return mUsername;
+    public String getApiUrl() {
+        return mApiUrl;
     }
 
-    public String getEmail() {
-        return mEmail;
+    public void setApiUrl(String url) {
+        mApiUrl = url;
     }
 }

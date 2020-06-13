@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
         PreferencesUtility.setSharedPreferences(this);
 
-        if (!PreferencesUtility.getUserInfo().getUsername().equals("")) {
+        if (!PreferencesUtility.getUserInfo().getUser().getUsername().equals("")) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);

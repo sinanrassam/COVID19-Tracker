@@ -14,4 +14,20 @@ public class User {
         mUsername = username;
     }
 
+    public String getFirstName() {
+        return mFirstName;
+    }
+
+    public String getLastName() {
+        return mLastName;
+    }
+
+    public String getEmail() {
+        return mEmail;
+    }
+
+    public String getUsername() {
+        return mUsername;
+    }
+
 }
