@@ -13,7 +13,7 @@ public class PreferencesUtility {
     private final static String KEY_USERNAME = "username";
     private final static String KEY_API_URL = "apiUrl";
 
-    private final static String DEFAULT_API_URL = "http://10.0.2.2:8080/COVID19TrackerAPI/api";
+    private final static String DEFAULT_API_URL = "http://192.168.1.9:8080/COVID19TrackerAPI/api";
 
     private static SharedPreferences mSharedPreferences;
 

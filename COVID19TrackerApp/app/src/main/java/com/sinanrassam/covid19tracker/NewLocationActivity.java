@@ -32,6 +32,8 @@ public class NewLocationActivity extends AppCompatActivity {
     private void handleTagConnection(Intent intent) {
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())) {
             nfcStatusView.setText("Card supported");
+            Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+            Log.d("ID", tag.getId().toString());
         }
     }
 
