@@ -13,6 +13,10 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.sinanrassam.covid19tracker.Tasks.FetchTagTask;
+
+import java.util.concurrent.ExecutionException;
+
 public class NewLocationActivity extends AppCompatActivity {
     private NfcAdapter nfcAdapter;
     private TextView nfcStatusView;
@@ -31,10 +35,18 @@ public class NewLocationActivity extends AppCompatActivity {
 
     private void handleTagConnection(Intent intent) {
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())) {
-            nfcStatusView.setText("Card supported");
-            Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             String id = byteArrayToHexString(intent.getByteArrayExtra(NfcAdapter.EXTRA_ID));
-            Log.d("ID", id);
+            nfcStatusView.setText("Card supported - ID: " + id);
+
+            FetchTagTask fetchTagTask = new FetchTagTask();
+            try {
+                String location = fetchTagTask.execute(id).get().toString();
+                Log.d("Location", location);
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
