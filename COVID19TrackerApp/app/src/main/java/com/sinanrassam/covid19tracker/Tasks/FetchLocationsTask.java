@@ -39,10 +39,10 @@ public class FetchLocationsTask extends AsyncTask<String, Void, Integer> {
     }
 
     @Override
-    protected Integer doInBackground(String... strings) {
+    protected Integer doInBackground(String... params) {
         int responseCode = 0;
         try {
-            URL url = new URL(PreferencesUtility.getApiUrl() + "/tracks/sinan");
+            URL url = new URL(PreferencesUtility.getApiUrl() + "/tracks/" + params[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json");
