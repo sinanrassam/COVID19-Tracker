@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
-import com.sinanrassam.covid19tracker.Entries.PreferenceEntry;
 import com.sinanrassam.covid19tracker.Entries.User;
 import com.sinanrassam.covid19tracker.MainActivity;
 import com.sinanrassam.covid19tracker.R;
@@ -92,10 +91,7 @@ public class LoginTask extends AsyncTask<String, Void, Boolean> {
         String msg;
         if (isLoggedIn) {
             msg = mContext.getResources().getString(R.string.action_sign_in_successful);
-            User user = new User(firstName, lastName, email, username);
-            PreferenceEntry preferenceEntry = new PreferenceEntry();
-            preferenceEntry.setUser(user);
-            PreferencesUtility.setUserInfo(preferenceEntry);
+            PreferencesUtility.setUserInfo(new User(firstName, lastName, email, username));
             Intent intent = new Intent(mContext, MainActivity.class);
             ActivityCompat.finishAffinity((Activity) mContext);
             mContext.startActivity(intent);

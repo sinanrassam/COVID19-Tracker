@@ -40,4 +40,10 @@
         android:layout_marginTop="@dimen/activity_textView_margin"
         android:inputType="textUri"
         android:hint="@string/action_api_url" />
+
+    <Button
+        android:id="@+id/btn_save_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/action_save_settings" />
 </LinearLayout>

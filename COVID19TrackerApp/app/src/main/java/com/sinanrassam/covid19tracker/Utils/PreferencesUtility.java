@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.sinanrassam.covid19tracker.Entries.PreferenceEntry;
 import com.sinanrassam.covid19tracker.Entries.User;
 
 public class PreferencesUtility {
@@ -12,7 +11,7 @@ public class PreferencesUtility {
     private final static String KEY_LAST_NAME = "lastName";
     private final static String KEY_EMAIL = "email";
     private final static String KEY_USERNAME = "username";
-    private final static String API_URL = "username";
+    private final static String KEY_API_URL = "apiUrl";
 
     private static SharedPreferences mSharedPreferences;
 
@@ -24,9 +23,8 @@ public class PreferencesUtility {
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public static boolean setUserInfo(PreferenceEntry preferenceEntry) {
+    public static boolean setUserInfo(User user) {
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        User user = preferenceEntry.getUser();
         editor.putString(KEY_FIRST_NAME, user.getFirstName());
         editor.putString(KEY_LAST_NAME, user.getLastName());
         editor.putString(KEY_EMAIL, user.getEmail());
@@ -34,19 +32,21 @@ public class PreferencesUtility {
         return editor.commit();
     }
 
-    public static boolean setApiUrl(PreferenceEntry preferenceEntry) {
+    public static boolean setApiUrl(String apiUrl) {
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString(API_URL, preferenceEntry.getApiUrl());
+        editor.putString(KEY_API_URL, apiUrl);
         return editor.commit();
     }
 
-    public static PreferenceEntry getUserInfo() {
+    public static String getApiUrl() {
+        return mSharedPreferences.getString(KEY_API_URL, "");
+    }
+
+    public static User getUser() {
         String firstName = mSharedPreferences.getString(KEY_FIRST_NAME, "");
         String lastName = mSharedPreferences.getString(KEY_LAST_NAME, "");
         String email = mSharedPreferences.getString(KEY_EMAIL, "");
         String username = mSharedPreferences.getString(KEY_USERNAME, "");
-        PreferenceEntry preferenceEntry = new PreferenceEntry();
-        preferenceEntry.setUser(new User(firstName, lastName, email, username));
-        return preferenceEntry;
+        return new User(firstName, lastName, email, username);
     }
 }
