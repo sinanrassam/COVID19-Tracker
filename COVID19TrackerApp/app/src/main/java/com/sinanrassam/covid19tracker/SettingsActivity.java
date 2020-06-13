@@ -34,8 +34,8 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 PreferencesUtility.setUserInfo(new User());
                 Toast.makeText(getApplicationContext(), R.string.action_logout_successful, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent intent = new Intent(view.getContext(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
