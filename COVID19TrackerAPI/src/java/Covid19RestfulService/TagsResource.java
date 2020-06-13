@@ -26,48 +26,43 @@ import javax.ws.rs.core.MultivaluedMap;
  * @author sinan
  */
 @Named // so that dependency injection can be used for the EJB
-@Path("/tracks")
-public class TracksResource {
+@Path("/tags")
+public class TagsResource {
 
     @EJB
-    private TracksBean tracksBean;
+    private TagsBean tagsBean;
+
+    public TagsResource() {
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAllTicketsJSON() {
+    @Path("{id}")
+    public String getTag(@PathParam("id") String id) {
         JsonObjectBuilder jsonBuilder = Json.createObjectBuilder();
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 
-        Collection<Track> allTracks = tracksBean.getAllTracks();
-        for (Track track : allTracks) {
-            arrayBuilder.add(track.getJSONObject());
+        Collection<Tag> tags = tagsBean.getTag(id);
+        for (Tag tag : tags) {
+            arrayBuilder.add(tag.getJSONObject());
         }
-        JsonObject json = jsonBuilder.add("tracks", arrayBuilder).build();
+        JsonObject json = jsonBuilder.add("tags", arrayBuilder).build();
 
         return json.toString();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("{user}")
-    public String getTracksForUser(@PathParam("user") String username) {        
+    public String getAllTags() {
         JsonObjectBuilder jsonBuilder = Json.createObjectBuilder();
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 
-        Collection<Track> allTracks = tracksBean.getTracksForUser(username);
-        for (Track track : allTracks) {
-            arrayBuilder.add(track.getJSONObject());
+        Collection<Tag> tags = tagsBean.getAllTags();
+        for (Tag tag : tags) {
+            arrayBuilder.add(tag.getJSONObject());
         }
-        JsonObject json = jsonBuilder.add("tracks", arrayBuilder).build();
+        JsonObject json = jsonBuilder.add("tags", arrayBuilder).build();
 
         return json.toString();
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public void addNewLocation(MultivaluedMap<String, String> formParams) {
-        String location = formParams.getFirst("location");
-        String username = formParams.getFirst("username");
-        tracksBean.addTrack(location, username);
     }
 }
