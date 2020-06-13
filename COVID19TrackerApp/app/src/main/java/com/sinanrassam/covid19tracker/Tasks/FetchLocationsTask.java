@@ -39,10 +39,10 @@ public class FetchLocationsTask extends AsyncTask<String, Void, Integer> {
     }
 
     @Override
-    protected Integer doInBackground(String... strings) {
+    protected Integer doInBackground(String... params) {
         int responseCode = 0;
         try {
-            URL url = new URL(PreferencesUtility.getApiUrl() + "/tracks/sinan");
+            URL url = new URL(PreferencesUtility.getApiUrl() + "/tracks/" + params[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json");
@@ -89,19 +89,15 @@ public class FetchLocationsTask extends AsyncTask<String, Void, Integer> {
     }
 
     protected void onPostExecute(Integer responseCode) {
-        String msg;
         if ((responseCode >= 200) && (responseCode <= 299)) {
-            msg = "Locations Fetched";
             SimpleAdapter adapter = new SimpleAdapter(mContext, mTicketList,
                     android.R.layout.simple_list_item_2,
                     new String[]{"Check In Date", "Location"},
                     new int[]{android.R.id.text1, android.R.id.text2});
             mFragment.setListAdapter(adapter);
             adapter.notifyDataSetChanged();
-
         } else {
-            msg = "Failed to fetch locations";
+            Toast.makeText(mContext, "Failed to fetch locations", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 }

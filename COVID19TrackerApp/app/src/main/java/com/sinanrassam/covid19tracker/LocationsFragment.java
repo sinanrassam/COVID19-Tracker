@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sinanrassam.covid19tracker.Tasks.FetchLocationsTask;
+import com.sinanrassam.covid19tracker.Utils.PreferencesUtility;
 
 public class LocationsFragment extends ListFragment {
 
@@ -39,6 +40,6 @@ public class LocationsFragment extends ListFragment {
     }
 
     private void refresh() {
-        new FetchLocationsTask(this).execute();
+        new FetchLocationsTask(this).execute(PreferencesUtility.getUser().getUsername());
     }
 }
