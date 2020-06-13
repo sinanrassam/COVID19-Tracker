@@ -74,9 +74,6 @@ public class UpdateLocationTask extends AsyncTask<String, Void, Integer> {
         String msg;
         if ((responseCode >= 200) && (responseCode <= 299)) {
             msg = "Location Updated!";
-            Intent myIntent = new Intent(mContext, LoginActivity.class);
-            ActivityCompat.finishAffinity((Activity) mContext);
-            mContext.startActivity(myIntent);
         } else {
             msg = "Location Update Failed";
         }

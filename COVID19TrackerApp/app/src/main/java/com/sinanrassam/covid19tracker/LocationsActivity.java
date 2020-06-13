@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -83,5 +84,15 @@ public class LocationsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         handleTagConnection(this.getIntent());
+    }
+    /* NfcActivity is declared in manifest to have launchMode singleTop
+     * so if activity already at top of back stack this method gets
+     * called rather than a new instance with onCreate
+     */
+    protected void onNewIntent(Intent intent)
+    {
+        super.onNewIntent(intent);
+        Log.i("Hiiiiiiiiiiiiiiiiiiii", "onNewIntent called");
+        setIntent(intent); // update this activity intent to be new one
     }
 }
