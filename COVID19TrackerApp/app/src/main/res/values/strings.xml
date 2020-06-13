@@ -17,4 +17,9 @@
     <string name="action_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_api_url">API Url</string>
+    <string name="action_save_settings">Save</string>
+    <string name="action_successful">Changes Saved</string>
+    <string name="action_logout_successful">You have been successfully Signed out</string>
+    <string name="action_logout">Sign out</string>
 </resources>
