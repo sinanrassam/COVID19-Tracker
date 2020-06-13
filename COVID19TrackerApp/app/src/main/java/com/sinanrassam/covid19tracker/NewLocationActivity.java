@@ -3,15 +3,13 @@ package com.sinanrassam.covid19tracker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
-import android.nfc.tech.Ndef;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.widget.TextView;
+
+import java.util.concurrent.ExecutionException;
 
 public class NewLocationActivity extends AppCompatActivity {
     private NfcAdapter nfcAdapter;
@@ -32,8 +30,6 @@ public class NewLocationActivity extends AppCompatActivity {
     private void handleTagConnection(Intent intent) {
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())) {
             nfcStatusView.setText("Card supported");
-            Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-            Log.d("ID", tag.getId().toString());
         }
     }
 
