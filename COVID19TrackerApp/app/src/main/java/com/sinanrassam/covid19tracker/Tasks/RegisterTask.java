@@ -13,6 +13,7 @@ import androidx.core.app.ActivityCompat;
 import com.sinanrassam.covid19tracker.LoginActivity;
 import com.sinanrassam.covid19tracker.MainActivity;
 import com.sinanrassam.covid19tracker.R;
+import com.sinanrassam.covid19tracker.Utils.PreferencesUtility;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,8 +34,6 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class RegisterTask extends AsyncTask<String, Void, Integer> {
-    public static final String API_URL = "http://10.0.2.2:8080/COVID19TrackerAPI/api";
-
     @SuppressLint("StaticFieldLeak")
     private Context mContext;
 
@@ -52,7 +51,7 @@ public class RegisterTask extends AsyncTask<String, Void, Integer> {
             postData += URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(params[4], "UTF-8");
 
             Log.d("hi", postData);
-            URL url = new URL(API_URL + "/users/");
+            URL url = new URL(PreferencesUtility.getApiUrl() + "/users/");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
