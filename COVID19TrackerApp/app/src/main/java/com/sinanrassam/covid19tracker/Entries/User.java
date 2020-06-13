@@ -14,6 +14,10 @@ public class User {
         mUsername = username;
     }
 
+    public User() {
+        this(null, null, null,null);
+    }
+
     public String getFirstName() {
         return mFirstName;
     }

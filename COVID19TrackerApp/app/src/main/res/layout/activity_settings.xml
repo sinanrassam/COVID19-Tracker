@@ -32,6 +32,12 @@
         android:layout_marginBottom="@dimen/activity_textView_margin"
         android:layout_marginTop="@dimen/activity_textView_margin" />
 
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/action_logout" />
+
     <EditText
         android:id="@+id/apiUrl"
         android:layout_width="match_parent"
