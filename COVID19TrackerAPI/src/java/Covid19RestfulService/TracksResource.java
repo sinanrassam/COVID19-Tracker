@@ -65,7 +65,7 @@ public class TracksResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public void addNewTicket(MultivaluedMap<String, String> formParams) {
+    public void addNewLocation(MultivaluedMap<String, String> formParams) {
         String location = formParams.getFirst("location");
         String username = formParams.getFirst("username");
         tracksBean.addTrack(location, username);

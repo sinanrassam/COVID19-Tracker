@@ -14,6 +14,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.sinanrassam.covid19tracker.Tasks.FetchTagTask;
+import com.sinanrassam.covid19tracker.Tasks.UpdateLocationTask;
+import com.sinanrassam.covid19tracker.Utils.PreferencesUtility;
 
 import java.util.concurrent.ExecutionException;
 
@@ -40,8 +42,8 @@ public class NewLocationActivity extends AppCompatActivity {
 
             FetchTagTask fetchTagTask = new FetchTagTask();
             try {
-                String location = fetchTagTask.execute(id).get().toString();
-                Log.d("Location", location);
+                String location = fetchTagTask.execute(id).get();
+                new UpdateLocationTask(this).execute(location, PreferencesUtility.getUser().getUsername());
             } catch (ExecutionException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
