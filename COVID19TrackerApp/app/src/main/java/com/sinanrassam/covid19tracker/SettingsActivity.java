@@ -36,6 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 PreferencesUtility.setApiUrl(mApiUrl.getText().toString());
                 Toast.makeText(getApplicationContext(), R.string.action_successful, Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }

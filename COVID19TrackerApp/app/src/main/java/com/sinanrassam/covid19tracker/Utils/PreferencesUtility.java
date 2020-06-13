@@ -13,6 +13,8 @@ public class PreferencesUtility {
     private final static String KEY_USERNAME = "username";
     private final static String KEY_API_URL = "apiUrl";
 
+    private final static String DEFAULT_API_URL = "http://10.0.2.2:8080/COVID19TrackerAPI/api";
+
     private static SharedPreferences mSharedPreferences;
 
     public PreferencesUtility(SharedPreferences sharedPreferences) {
@@ -39,7 +41,7 @@ public class PreferencesUtility {
     }
 
     public static String getApiUrl() {
-        return mSharedPreferences.getString(KEY_API_URL, "");
+        return mSharedPreferences.getString(KEY_API_URL, DEFAULT_API_URL);
     }
 
     public static User getUser() {
