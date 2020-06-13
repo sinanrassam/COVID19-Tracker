@@ -25,4 +25,5 @@
     <string name="nfc_uavailable">NFC is not available on this device</string>
     <string name="nfc_tag_not_supported">This NFC Tag is not supported</string>
     <string name="wait_for_nfc_card">Waiting for NFC Tag to be scanned</string>
+    <string name="action_already_logged_out">You are already logged out</string>
 </resources>
