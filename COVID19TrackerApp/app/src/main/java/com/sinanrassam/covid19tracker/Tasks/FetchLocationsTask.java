@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.ListFragment;
 
+import com.sinanrassam.covid19tracker.Utils.PreferencesUtility;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,8 +26,6 @@ import java.util.List;
 import java.util.Map;
 
 public class FetchLocationsTask extends AsyncTask<String, Void, Integer> {
-    public static final String API_URL = "http://10.0.2.2:8080/COVID19TrackerAPI/api";
-
     @SuppressLint("StaticFieldLeak")
     private Context mContext;
 
@@ -42,7 +42,7 @@ public class FetchLocationsTask extends AsyncTask<String, Void, Integer> {
     protected Integer doInBackground(String... strings) {
         int responseCode = 0;
         try {
-            URL url = new URL(API_URL + "/tracks/sinan");
+            URL url = new URL(PreferencesUtility.getApiUrl() + "/tracks/sinan");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json");

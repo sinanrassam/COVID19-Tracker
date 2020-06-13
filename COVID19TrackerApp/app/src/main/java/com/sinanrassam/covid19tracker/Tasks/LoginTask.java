@@ -29,8 +29,6 @@ import java.net.URL;
 import com.sinanrassam.covid19tracker.Utils.PreferencesUtility;
 
 public class LoginTask extends AsyncTask<String, Void, Boolean> {
-    public static final String API_URL = "http://10.0.2.2:8080/COVID19TrackerAPI/api";
-
     private String firstName, lastName, email, username;
 
     @SuppressLint("StaticFieldLeak")
@@ -43,7 +41,7 @@ public class LoginTask extends AsyncTask<String, Void, Boolean> {
     protected Boolean doInBackground(String... params) {
         boolean isLoggedIn = false;
         try {
-            URL url = new URL(API_URL + "/users/" + params[0]);
+            URL url = new URL(PreferencesUtility.getApiUrl() + "/users/" + params[0]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json");
