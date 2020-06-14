@@ -51,7 +51,7 @@ public class LocationsActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        } else {
+        } else if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             Toast.makeText(getApplicationContext(), R.string.nfc_tag_not_supported, Toast.LENGTH_SHORT).show();
         }
     }
