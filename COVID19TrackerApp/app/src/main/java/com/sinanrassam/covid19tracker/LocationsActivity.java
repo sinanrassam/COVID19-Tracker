@@ -1,18 +1,18 @@
 package com.sinanrassam.covid19tracker;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sinanrassam.covid19tracker.Tasks.FetchTagTask;
-import com.sinanrassam.covid19tracker.Tasks.UpdateLocationTask;
 import com.sinanrassam.covid19tracker.Utils.PreferencesUtility;
 
 import java.util.concurrent.ExecutionException;
@@ -24,6 +24,10 @@ public class LocationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locations);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(R.string.action_my_location);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         FloatingActionButton myFab = this.findViewById(R.id.btn_new_location);
@@ -46,20 +50,14 @@ public class LocationsActivity extends AppCompatActivity {
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())) {
             String id = byteArrayToHexString(intent.getByteArrayExtra(NfcAdapter.EXTRA_ID));
 
-            FetchTagTask fetchTagTask = new FetchTagTask();
             try {
-                String location = fetchTagTask.execute(id).get();
-                if (location != null) {
-                    new UpdateLocationTask(this).execute(location, PreferencesUtility.getUser().getUsername());
-                } else {
-                    Toast.makeText(getApplicationContext(), R.string.nfc_tag_not_supported, Toast.LENGTH_SHORT).show();
-                }
+                new FetchTagTask(this).execute(id, PreferencesUtility.getUser().getUsername()).get();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        } else {
+        } else if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             Toast.makeText(getApplicationContext(), R.string.nfc_tag_not_supported, Toast.LENGTH_SHORT).show();
         }
     }
@@ -92,7 +90,16 @@ public class LocationsActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent)
     {
         super.onNewIntent(intent);
-        Log.i("Hiiiiiiiiiiiiiiiiiiii", "onNewIntent called");
         setIntent(intent); // update this activity intent to be new one
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

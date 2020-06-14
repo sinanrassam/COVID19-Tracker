@@ -13,6 +13,7 @@
     <string name="action_register_successful">Account registraion Successful</string>
     <string name="action_register_unsuccessful">Account creation failed</string>
     <string name="action_new_location">New Location</string>
+    <string name="action_location_saved">New location was saved!</string>
     <string name="action_my_location">My Locations</string>
     <string name="action_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -29,4 +30,5 @@
     <string name="nfc_tag_supported">Valid tag detected</string>
     <string name="nfc_tag">Tag detected</string>
     <string name="tag_unknown">Unknown Tag Discovered</string>
+    <string name="action_request_failed">Error: Please scan a valid tag</string>
 </resources>
