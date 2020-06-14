@@ -26,7 +26,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class FetchTagTask extends AsyncTask<String, Void, Integer> {
+public class FetchTagTask extends AsyncTask<String, Void, Boolean> {
     @SuppressLint("StaticFieldLeak")
     private Context mContext;
 
@@ -35,23 +35,41 @@ public class FetchTagTask extends AsyncTask<String, Void, Integer> {
     }
 
     @Override
-    protected Integer doInBackground(String... params) {
-        int responseCode = 0;
+    protected Boolean doInBackground(String... params) {
+        boolean isSuccessful = false;
         try {
             URL url = new URL(PreferencesUtility.getApiUrl() + "/tags/" + params[0] + "/" + params[1]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 
-            responseCode = conn.getResponseCode();
-        } catch (IOException e) {
+            // Read the server response and return it as JSON
+            InputStream inputStream = conn.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            StringBuilder sb = new StringBuilder();
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+            JSONObject json = new JSONObject(sb.toString());
+
+            bufferedReader.close();
+            inputStream.close();
+
+            conn.disconnect();
+
+            if (json != null) {
+                JSONArray jsonArray = (JSONArray) json.get("tags");
+                isSuccessful = jsonArray.length() == 1;
+            }
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-        return responseCode;
+        return isSuccessful;
     }
 
-    protected void onPostExecute(Integer responseCode) {
+    protected void onPostExecute(Boolean isSuccessful) {
         String msg;
-        if ((responseCode >= 200) && (responseCode <= 299)) {
+        if (isSuccessful) {
             msg = mContext.getResources().getString(R.string.action_location_saved);
         } else {
             msg = mContext.getResources().getString(R.string.action_request_failed);

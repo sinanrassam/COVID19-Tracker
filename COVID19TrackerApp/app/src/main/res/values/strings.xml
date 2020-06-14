@@ -30,5 +30,5 @@
     <string name="nfc_tag_supported">Valid tag detected</string>
     <string name="nfc_tag">Tag detected</string>
     <string name="tag_unknown">Unknown Tag Discovered</string>
-    <string name="action_request_failed">We failed to process your request</string>
+    <string name="action_request_failed">Error: Please scan a valid tag</string>
 </resources>
