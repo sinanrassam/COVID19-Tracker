@@ -38,13 +38,13 @@ public class TracksBean {
     }
 
     public List<Track> getAllTracks() {
-        String jpqlCommand = "SELECT t FROM Track t";
+        String jpqlCommand = "SELECT t FROM Track t ORDER BY t.checkInTimestamp DESC";
         Query query = entityManager.createQuery(jpqlCommand);
         return query.getResultList();
     }
 
     public List<Track> getTracksForUser(String username) {
-        String jpqlCommand = "SELECT t FROM Track t WHERE t.username = :username";
+        String jpqlCommand = "SELECT t FROM Track t WHERE t.username = :username ORDER BY t.checkInTimestamp DESC";
         Query query = entityManager.createQuery(jpqlCommand);
         query.setParameter("username", username);
         return query.getResultList();
