@@ -1,11 +1,13 @@
 package com.sinanrassam.covid19tracker;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,6 +24,10 @@ public class LocationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locations);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(R.string.action_my_location);
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         FloatingActionButton myFab = this.findViewById(R.id.btn_new_location);
@@ -85,5 +91,15 @@ public class LocationsActivity extends AppCompatActivity {
     {
         super.onNewIntent(intent);
         setIntent(intent); // update this activity intent to be new one
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
